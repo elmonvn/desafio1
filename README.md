@@ -5,7 +5,7 @@ Desafio 1
 xxx
 
 ## Metodologia
-xxx [^1]
+xxx <sup>[1](#ref1)</sup>
 
 ### Dados
 xxx
@@ -17,4 +17,4 @@ xxx
 xxx
 
 ## Referências
-[^1]: xxx
+<a name="ref1">1</a>: xxx
