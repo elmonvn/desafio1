@@ -1,19 +1,25 @@
 # desafio1
 Desafio 1
 
-## Introdução
+## 1. Introdução
 xxx
 
-## Metodologia
+### 1.1 Apresentação do problema
+xxx
+
+### 1.2 Motivação/justificativa e objetivos
+xxx
+
+## 2. Metodologia
 xxx <sup>[1](#ref1)</sup>
 
-### Dados
+### 2.1 Dados
 xxx
 
-### Ferramentas de software
-xxx
+### 2.2 Ferramentas de software
+Apache HBase
 
-## Resultados
+## 3. Proposta de solução
 xxx
 
 ## Referências
