@@ -126,4 +126,4 @@ Data de início | Atividade | Duração
 19/11/2019 | Criação do projeto no _Scrapy_ denominado _desafio1crawlers_ | 0:10
 18/11/2019 | Revisão sobre arquiteturas possíveis para projeto | 4:00
 19/11/2019 | Documentação do projeto, arquitetura e módulos (continuação) | 2:00
-20/11/2019 | Documentação do projeto, arquitetura e módulos (continuação) | 3:00
+20/11/2019 | Documentação do projeto, arquitetura e módulos (continuação) | 
