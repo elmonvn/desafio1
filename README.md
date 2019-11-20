@@ -83,7 +83,7 @@ Por fim, será criada uma imagem única para o HBase e o Phoenix, a partir daque
 
 A figura abaixo ilustra, de forma esquemática, a arquitetura:
 
-![GitHub Logo](/images/logo.png)
+![Arquitetura de _desafio1_](/images/arquitetura.png)
 
 #### 3.1.1 Estrutura de dados
 
