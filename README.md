@@ -65,26 +65,35 @@ Já o pacote [**_phoenixdb_**](https://phoenix.apache.org/python.html) foi escol
 
 Pela quantidade massiva de dados que o _web crawling/scraping_ é designado para coletar, deve ser determinada uma solução de persistência de armazenamento de dados que tenha boa escalabilidade, acesso _real-time_ e distribuído, flexibilidade de estrutura tipo _NoSQL_ e maturidade de mercado, bem como boa integrabilidade com os serviços de nuvem mais populares. Assim, elegeu-se o [**_Apache HBase_**](https://hbase.apache.org/), parte do ecossistema _Apache Hadoop_, como a ferramenta de banco de dados para este projeto. 
 
-Por outro lado, o _HBase_ pode não ter a interface de consulta mais amigável para desenvolvedores habituados ao mundo relacional --- ou mesmo a outras plataformas _NoSQL_---, sobretudo por prover poucas operações do tipo _CRUD_ e por restringir seu tipo de dados apenas a _arrays_ de _bytes_. Assim, foi desenvolvida a solução [**_Apache Phoenix_**](https://phoenix.apache.org/), cujo objetivo é servir de _query engine_ relacional (via SQL), ou camada relacional, para as chamadas nativas ao HBase. 
+Por outro lado, o HBase pode não ter a interface de consulta mais amigável para desenvolvedores habituados ao mundo relacional --- ou mesmo a outras plataformas _NoSQL_---, sobretudo por prover poucas operações do tipo _CRUD_ e por restringir seu tipo de dados apenas a _arrays_ de _bytes_. Assim, foi desenvolvida a solução [**_Apache Phoenix_**](https://phoenix.apache.org/), cujo objetivo é servir de _query engine_ relacional (via SQL), ou camada relacional, para as chamadas nativas ao HBase, além de paralelizar o acesso ao banco. Portanto, o _Apache Phoenix_ foi eleito como camada de acesso ao HBase para este projeto.
+
+As versões utilizadas para todo software mencionado aqui serão as mais recentes.
+
+As ferramentas para análise dos dados recolhidos serão definidas _a posteriori_, recorrendo-se, no momento, a consultas individuais ao banco via Phoenix.  
 
 ## 3. Proposta de solução
 
 ### 3.1 Arquitetura
 
-BATCH
+De forma "macro", observa-se que os artigos de portais sobre automóveis não costumam ter alta freqüência de postagem. De fato, pode-se dizer que são lançamento de notícias sazonalmente, com pico nos último trimestre do ano, quando são divulgados novos lançamentos no mercado para o ano seguinte e as avaliações do tipo "melhor do ano". Logo, é seguro recorrer à estratégia do **processamento _batch_** da aquisição dos dados desses portais.
 
-Docker > Scrapy (Python) >  > HBase  
+Além disso, para melhor integração e modularização da solução _desafio1_, bem como melhor adequação às boas práticas do _Scrapy_, estabeleceu-se que cada _spider_ (_crawler_) para cada portal ficaria em contêiner separado dos outros. Desta forma, serão criado 5 conteineres, 1 para cada portal. Sobre estas 5 imagens, serão instalados os pacotes _Scrapy_ e _phoenixdb_, e será copiada a estrutura de diretórios _/desafio1/src/desafio1crawlers_, igual para cada imagem, mas a ser acionada por _spiders_ diferentes cada uma, referente ao portal em questão. A imagem base será adquirida do [**_Docker Hub_**](https://hub.docker.com/), mais especificamente a imagem [**_python_**](https://hub.docker.com/_/python).
+
+Por fim, será criada uma imagem única para o HBase e o Phoenix, a partir daquela disponível no _Docker Hub **[harisekhon/hbase](https://hub.docker.com/r/harisekhon/hbase)**_.
+
+A figura abaixo ilustra, de forma esquemática, a arquitetura:
+
+![GitHub Logo](/images/logo.png)
 
 #### 3.1.1 Estrutura de dados
 
-#### 3.1.2 Metadados
+Metadados
 
-#### 3.1.3 Métricas de engajamento
+Métricas de engajamento
 
 ### 3.2 _Build_
 
 Dockerfiles
-
 
 ### 3.3 Monitoramento
 
@@ -93,18 +102,28 @@ Dockerfiles
 ### 3.5 Estratégia de _deploy_
 
 ## 4. Conclusões e melhorias futuras
-zzz
-Apache Gora
-Apache Nutch
-PySpark (Python)
-Apache Spark
+
+* Apache Gora
+
+* Apache Spark
+
+* Apache Nutch
+
+* PySpark (Python) 
 
 ## Referências
 <a name="ref1">1</a>: https://www.skylynapps.com/scrapemate/learn/help/general/difference-between-crawler-and-scraper.php
 
 ## Apêndice - Worklog
 Data de início | Atividade | Duração
-------------- | :-------------: | :-----:
-xx/xx/xxxx | right-aligned | xx:xx
-yy/yy/yyyy | centered      | yy:yy
-zz/zz/yyyy | are neat      | zz:zz
+------------- | ------------- | -----
+13/11/2019 | Análise e entendimento do desafio proposto | 1:00
+13/11/2019 | Criação do repositório _desafio1_ no GitHub | 0:10
+17/11/2019 | Revisão das melhores ferramentas para _web crawling/scraping_ | 4:00
+17/11/2019 | Atualização sobre funcionalidades do _Scrapy_ | 1:00
+18/11/2019 | Revisão sobre funcionalidades do Apache HBase e Apache Phoenix | 2:00
+18/11/2019 | Documentação do projeto, arquitetura e módulos (início) | 2:00
+19/11/2019 | Criação do projeto no _Scrapy_ denominado _desafio1crawlers_ | 0:10
+18/11/2019 | Revisão sobre arquiteturas possíveis para projeto | 4:00
+19/11/2019 | Documentação do projeto, arquitetura e módulos (continuação) | 2:00
+20/11/2019 | Documentação do projeto, arquitetura e módulos (continuação) | 3:00
